@@ -46,8 +46,9 @@ userRoutes.get("/email/:email", async(req, res)=>{
  })
 
  userRoutes.post("/", async (req, res) =>{
+    const {email}=req.body;
      try {
-         const result = await createUser(req.body)
+         const result = await createUser(email)
          res.status(201).send(result)
      } catch (error) {
          console.log(error)

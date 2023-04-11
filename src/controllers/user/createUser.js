@@ -3,12 +3,12 @@ const {getUser} = require('../../controllers/user/getUser.js')
 
 
 const createUser = async (email) => {
-    const userBD = await User.findOne(email)
+    const userBD = await User.findOne({email:email})
 
     if (userBD) {
         return userBD
     }else{
-        const dataAuth0 = await getUser(email.email)
+        const dataAuth0 = await getUser(email)
         const newUser = new User({
             useridAuth0: dataAuth0[0].identities[0].user_id,
             name: dataAuth0[0].given_name,
