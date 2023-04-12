@@ -6,12 +6,12 @@ const {deleteUser, activateUser, updateUser, giveAdmin, removeAdmin, addOrder} =
 const userRoutes = Router();
 
 userRoutes.get("/", async (req, res) =>{
-    const {email}= req.query;
+    const {email}= req.body;
     try {
        if(email){
           return res.status(201).send(await getUser(email))
         }
-        return res.status(201).send(await getAllUsers())
+        return res.status(200).send(await getAllUsers())
     } catch (error) {
         res.status(404).send({error})
     }
@@ -46,12 +46,11 @@ userRoutes.get("/email/:email", async(req, res)=>{
  })
 
  userRoutes.post("/", async (req, res) =>{
-    const {email}=req.body;
+    const {user}=req.body;
      try {
-         const result = await createUser(email)
+         const result = await createUser(user)
          res.status(201).send(result)
      } catch (error) {
-         console.log(error)
          res.status(400).send(error)
      }
  })

@@ -4,8 +4,7 @@ const mongoose= require("mongoose");
 const {
   DB_NAME, DB_PASSWORD,
 } = process.env;
-console.log(DB_NAME);
-console.log(DB_PASSWORD);
+
 main().catch(err => console.log(err));
 
 

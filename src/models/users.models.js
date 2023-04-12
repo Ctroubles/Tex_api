@@ -7,6 +7,10 @@ const usersSchema= new Schema(
             type: Boolean,
             default: true,
         },
+        verified:{
+            type: Boolean,
+            required:true,
+        },        
         useridAuth0:{
             type: String,
             required:true,
@@ -37,6 +41,7 @@ const usersSchema= new Schema(
         },        
         texPoints:{
             type: Number,
+            default: 0,
             required: false,
         },
     },

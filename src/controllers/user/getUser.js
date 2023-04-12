@@ -14,11 +14,11 @@ const auth00 = new ManagementClient({
     clientSecret: CLIENT_SECRET_AUTH0,
     scope: 'read:users'
   });
-  
-  // Get all users
+
  const getAllUsers = async ()=>{
     try {
-      return await auth00.users.getAll();
+      const respuesta = await auth00.users.getAll();
+      return respuesta;
     } catch (error) {
       throw new Error(error.message)
     }
