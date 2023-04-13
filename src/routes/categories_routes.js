@@ -14,6 +14,7 @@ const Teclados = require("../models/productos_models/teclados.model.js");
 const Mouses = require("../models/productos_models/mouses.model.js");
 const Audifonos = require("../models/productos_models/audifonos.model.js");
 const Laptops = require("../models/productos_models/laptops.models.js");
+const Impresoras = require("../models/productos_models/impresoras.model.js");
 
 
 
@@ -154,6 +155,16 @@ componentsRoutes.get("/Audifonos", async(req, res)=>{
 componentsRoutes.get("/Laptops", async(req, res)=>{
     try {
         const result = await Laptops.find();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+});
+
+
+componentsRoutes.get("/Impresoras", async(req, res)=>{
+    try {
+        const result = await Impresoras.find();
         res.status(200).send(result);
     } catch (error) {
         res.status(404).send(error)
