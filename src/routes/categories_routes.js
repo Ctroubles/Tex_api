@@ -173,6 +173,17 @@ componentsRoutes.get("/Impresoras", async(req, res)=>{
 
 
 
+componentsRoutes.get("/Microfonos", async(req, res)=>{
+    try {
+        const result = await Impresoras.find();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+});
+
+
+
 
 
 

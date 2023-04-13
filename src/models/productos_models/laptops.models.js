@@ -17,6 +17,9 @@ const componentSchema= new Schema(
         price:{
             type: Number,
             required: true,
+            get: function (value) {
+                return Number(value) + 300;
+              }
         },
         category:{
             type:String,
