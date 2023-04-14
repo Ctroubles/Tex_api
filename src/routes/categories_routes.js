@@ -15,6 +15,7 @@ const Mouses = require("../models/productos_models/mouses.model.js");
 const Audifonos = require("../models/productos_models/audifonos.model.js");
 const Laptops = require("../models/productos_models/laptops.models.js");
 const Impresoras = require("../models/productos_models/impresoras.model.js");
+const Microfono = require("../models/productos_models/microfonos.model.js");
 
 
 
@@ -175,7 +176,7 @@ componentsRoutes.get("/Impresoras", async(req, res)=>{
 
 componentsRoutes.get("/Microfonos", async(req, res)=>{
     try {
-        const result = await Impresoras.find();
+        const result = await Microfono.find();
         res.status(200).send(result);
     } catch (error) {
         res.status(404).send(error)
