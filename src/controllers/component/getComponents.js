@@ -8,6 +8,7 @@ const Gabinetes = require("../../models/productos_models/gabinetes.models.js")
 const Monitores = require("../../models/productos_models/monitores.model.js");
 const Mouses = require("../../models/productos_models/mouses.model.js");
 const Laptops = require("../../models/productos_models/laptops.models.js");
+const Microfono = require("../../models/productos_models/microfonos.model.js");
 
 
 const findComp = async (name) => {
@@ -20,7 +21,8 @@ const findComp = async (name) => {
 
 const findById = async (id) => {
 
-        const [almacenamiento, procesador, ram, grafica, fuentes, motherboards, gabinetes, monitores, mouse,laptop] = await Promise.all([
+        const [laptop, almacenamiento, procesador, ram, grafica, fuentes, motherboards, gabinetes, monitores, mouse, microfono] = await Promise.all([
+            Laptops.findById(id),
             Almacenamiento.findById(id),
             Procesadores.findById(id),
             Ram.findById(id),
@@ -30,8 +32,9 @@ const findById = async (id) => {
             Gabinetes.findById(id),
             Monitores.findById(id),
             Mouses.findById(id),
-            Laptops.findById(id),
+            Microfono.findById(id),
         ]);
+        if(laptop) return laptop;
         if(procesador) return procesador;
         if(almacenamiento) return almacenamiento;
         if(ram) return ram;
@@ -41,7 +44,7 @@ const findById = async (id) => {
         if(gabinetes) return gabinetes;
         if(monitores) return monitores;
         if(mouse) return mouse;
-        if(laptop) return laptop;
+        if(microfono) return microfono;
         else throw new Error("No se ha encontrado un componente con ese ID");
     
 }

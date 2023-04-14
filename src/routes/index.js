@@ -23,7 +23,8 @@ const Gabinetes = require('../models/productos_models/gabinetes.models.js');
 const Teclados = require('../models/productos_models/teclados.model');
 const Laptops = require('../models/productos_models/laptops.models');
 const Impresoras = require('../models/productos_models/impresoras.model');
-const ImpresoraSuministros = require("../models/productos_models/suministros_impresoras.model.js")
+const ImpresoraSuministros = require("../models/productos_models/suministros_impresoras.model.js");
+const Microfono = require('../models/productos_models/microfonos.model');
 
 
 
@@ -31,7 +32,8 @@ const router = Router();
 
 router.get("/",async(req,res)=>{
     try {
-        const [almacenamiento, procesadores, ram , graficas,fuentes, gabinetes,teclados, laptops,impresoras,impresoraSuministros] = await Promise.all([
+        const [laptops, almacenamiento, procesadores, ram , graficas,fuentes, gabinetes,teclados, impresoras,impresoraSuministros] = await Promise.all([
+            Laptops.find(),
             Almacenamiento.find(),
             Procesadores.find(),
             Ram.find(),
@@ -39,11 +41,11 @@ router.get("/",async(req,res)=>{
             Fuentes.find(),
             Gabinetes.find(),
             Teclados.find(),
-            Laptops.find(),
             Impresoras.find(),
-            ImpresoraSuministros.find()
+            ImpresoraSuministros.find(),
+            Microfono.find()
         ]);
-        res.json({graficas, almacenamiento, procesadores, ram,fuentes, gabinetes,teclados, laptops, impresoras, impresoraSuministros});
+        res.json({laptops, graficas, almacenamiento, procesadores, ram,fuentes, gabinetes,teclados, laptops, impresoras, impresoraSuministros});
       } catch (err) {
         res.status(500).json({ error: err.message });
       }
