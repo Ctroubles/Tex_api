@@ -2,18 +2,18 @@ const { Router } = require('express');
 const {getAllUsers, getUser, getDB, getUserDb} = require("../controllers/user/getUser.js")
 const createUser = require("../controllers/user/createUser")
 const {deleteUser, activateUser, updateUser, giveAdmin, removeAdmin, addOrder} = require('../controllers/user/updateUser.js');
+const User = require('../models/users.models.js');
+
 
 const userRoutes = Router();
 
 userRoutes.get("/", async (req, res) =>{
     const {email}= req.body;
     try {
-       if(email){
-          return res.status(201).send(await getUser(email))
-        }
-        return res.status(200).send(await getAllUsers())
+        const result = await User.find({email:email});
+        return res.status(200).send(result);
     } catch (error) {
-        res.status(404).send({error})
+        return res.status(404).send(error)
     }
 })
 

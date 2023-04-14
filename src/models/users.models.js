@@ -30,6 +30,10 @@ const usersSchema= new Schema(
         DNI:{
             type:String,
             required:false,
+        },        
+        birthday:{
+            type:String,
+            required:false,
         },
         phoneNumber:{
             type: Number,
