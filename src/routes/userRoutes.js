@@ -7,15 +7,15 @@ const User = require('../models/users.models.js');
 
 const userRoutes = Router();
 
-userRoutes.get("/", async (req, res) =>{
-    const {email}= req.body;
+userRoutes.get("/", async (req, res) => {
+    const { email } = req.query; // obtener el parámetro de consulta "email"
     try {
-        const result = await User.find({email:email});
-        return res.status(200).send(result);
+      const result = await User.find({ email: email });
+      return res.status(200).send(result);
     } catch (error) {
-        return res.status(404).send(error)
+      return res.status(404).send(error);
     }
-})
+  });
 
  userRoutes.get("/db", async(req, res)=>{
     try {
