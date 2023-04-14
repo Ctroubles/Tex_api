@@ -10,7 +10,7 @@ const userRoutes = Router();
 userRoutes.get("/", async (req, res) => {
     const { email } = req.query; // obtener el parámetro de consulta "email"
     try {
-        const result = await User.findOne({ email: email });
+        const result = await User.findOne({ email: email }).populate('purchaseOrders')        
         return res.status(200).send(result);
     } catch (error) {
          return res.status(404).send(error);
