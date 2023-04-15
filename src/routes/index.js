@@ -6,8 +6,7 @@ const categoriesRoutes = require("./categories_routes")
 const userRoutes= require("./userRoutes.js")
 const reviewRoutes= require("./reviewRoutes.js");
 const nodemailer = require('./nodemailer.js');
-// const cpu_routes = require('./productos_routes/cpu_routes.js');
-// const ram_routes = require('./productos_routes/ram_routes');
+
 
 const purchase_order = require("./purchase_order/create_orders")
 const peticiones_post = require("./peticiones_post/peticiones_post")
@@ -25,6 +24,10 @@ const Laptops = require('../models/productos_models/laptops.models');
 const Impresoras = require('../models/productos_models/impresoras.model');
 const ImpresoraSuministros = require("../models/productos_models/suministros_impresoras.model.js");
 const Microfono = require('../models/productos_models/microfonos.model');
+const Audifonos = require('../models/productos_models/audifonos.model');
+const Monitores = require('../models/productos_models/monitores.model');
+const Motherboard = require('../models/productos_models/moterboard.model');
+const Mouses = require('../models/productos_models/mouses.model');
 
 
 
@@ -32,7 +35,7 @@ const router = Router();
 
 router.get("/",async(req,res)=>{
     try {
-        const [laptops, almacenamiento, procesadores, ram , graficas,fuentes, gabinetes,teclados, impresoras,impresoraSuministros] = await Promise.all([
+        const [laptops, almacenamiento, procesadores, ram , graficas,fuentes, gabinetes,teclados, impresoras,microfonos,audifonos,monitores,motherboard,mouses,impresoraSuministros] = await Promise.all([
             Laptops.find(),
             Almacenamiento.find(),
             Procesadores.find(),
@@ -42,10 +45,14 @@ router.get("/",async(req,res)=>{
             Gabinetes.find(),
             Teclados.find(),
             Impresoras.find(),
+            Microfono.find(),
+            Audifonos.find(),
+            Monitores.find(),
+            Motherboard.find(),
+            Mouses.find(),
             ImpresoraSuministros.find(),
-            Microfono.find()
         ]);
-        res.json({laptops, graficas, almacenamiento, procesadores, ram,fuentes, gabinetes,teclados, laptops, impresoras, impresoraSuministros});
+        res.json({laptops, graficas, almacenamiento, procesadores, ram, fuentes, gabinetes, teclados, impresoras, microfonos, audifonos, monitores, motherboard, mouses, impresoraSuministros});
       } catch (err) {
         res.status(500).json({ error: err.message });
       }

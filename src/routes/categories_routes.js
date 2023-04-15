@@ -16,6 +16,7 @@ const Audifonos = require("../models/productos_models/audifonos.model.js");
 const Laptops = require("../models/productos_models/laptops.models.js");
 const Impresoras = require("../models/productos_models/impresoras.model.js");
 const Microfono = require("../models/productos_models/microfonos.model.js");
+const ImpresoraSuministros = require("../models/productos_models/suministros_impresoras.model.js");
 
 
 
@@ -182,6 +183,19 @@ componentsRoutes.get("/Microfonos", async(req, res)=>{
         res.status(404).send(error)
     }
 });
+
+
+
+componentsRoutes.get("/Impresorasuministor", async(req, res)=>{
+    try {
+        const result = await ImpresoraSuministros.find();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+});
+
+
 
 
 
