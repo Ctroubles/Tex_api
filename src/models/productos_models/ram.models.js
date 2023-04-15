@@ -17,12 +17,13 @@ const componentSchema= new Schema(
         stock:{
             type: Number,
             required: true,
-            min: -2147483648,
-            max: 2147483647,
         },
         price:{
             type: Number,            
             required: true,
+            get: function (value) {
+                return Number(value) * 1.27;
+            }
         }, 
         category:{
             type:String,
@@ -41,6 +42,11 @@ const componentSchema= new Schema(
             type: String,
             required: true,
         },
+    },
+    {
+        toJSON: {
+            getters: true
+        }
     }
 );
 

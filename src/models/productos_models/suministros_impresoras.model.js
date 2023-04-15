@@ -51,7 +51,11 @@ const componentSchema= new Schema(
             required:true
         }
     },
-
+    {
+        toJSON: {
+            getters: true
+        }
+    },
 );
 
 const ImpresoraSuministros = model("ImpresoraSuministros", componentSchema)

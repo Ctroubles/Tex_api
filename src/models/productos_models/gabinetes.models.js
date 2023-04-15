@@ -18,7 +18,7 @@ const componentSchema= new Schema(
             type: Number,
             required: true,
             get: function (value) {
-                return Number(value) + 50;
+                return Number(value) * 1.27;
               }
         },
         category:{
@@ -52,6 +52,11 @@ const componentSchema= new Schema(
         cod:{
             type: String,
             required: true,
+        }
+    },
+    {
+        toJSON: {
+            getters: true
         }
     }
 );

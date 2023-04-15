@@ -58,7 +58,12 @@ const componentSchema= new Schema(
             type:String,
             required:true
         }
-    }
+    },
+    {
+        toJSON: {
+            getters: true
+        }
+    },
 );
 
 const Motherboard = model("Motherboard", componentSchema);

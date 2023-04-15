@@ -43,6 +43,11 @@ const componentSchema= new Schema(
             type: Number,
             required: true
         },
+    },
+    {
+        toJSON: {
+            getters: true
+        }
     }
 );
 

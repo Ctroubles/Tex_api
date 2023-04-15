@@ -17,6 +17,9 @@ const componentSchema= new Schema(
         price:{
             type: Number,
             required: true,
+            get: function (value) {
+                return Number(value) * 1.14;
+            }
         },
         category:{
             type:String,
@@ -62,6 +65,11 @@ const componentSchema= new Schema(
             type: String,
             required: true
         },         
+    },
+    {
+        toJSON: {
+            getters: true
+        }
     }
 );
 
