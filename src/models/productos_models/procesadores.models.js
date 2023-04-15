@@ -17,9 +17,9 @@ const componentSchema= new Schema(
         price:{
             type: Number,
             required: true,
-            // get: function (value) {
-            //     return Number(value) + 150;
-            //   }
+            get: function (value) {
+                return Number(value) * 0.13;
+            }
         },
         category:{
             type:String,
