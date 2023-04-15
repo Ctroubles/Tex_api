@@ -18,15 +18,8 @@ const componentSchema= new Schema(
             type: Number,
             required: true,
             get: function (value) {
-                const price = Number(value);
-                if (price < 3000) {
-                  return price + 300;
-                } else if (price >= 3000 && price < 4000) {
-                  return price * 1.1;
-                } else {
-                  return price * 1.11;
-                }
-              },
+                return Number(value) * 1.11;
+            }
         },
         category:{
             type:String,
