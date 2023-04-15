@@ -18,7 +18,7 @@ const componentSchema= new Schema(
             type: Number,
             required: true,
             get: function (value) {
-                return Number(value) * 0.13;
+                return Number(value) * 1.13;
             }
         },
         category:{
