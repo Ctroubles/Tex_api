@@ -1,5 +1,6 @@
 const { Router }= require("express");
 const PurchaseOrder = require("../../models/purchase_models.js/purchase_order");
+const User = require("../../models/users.models");
 const  { generarNumeroOrden } = require("../../utils/shopping.utils");
 
 const orders_routes = Router();
@@ -25,8 +26,10 @@ orders_routes.post("/create", async (req, res) =>{
             products,
             instructions
         })
-    
         const result = await newOder.save()
+        if(user){ const usuariupdt= await User.findByIdAndUpdate(user, { $push: { purchaseOrders: result._id } })
+            console.log(usuariupdt);
+        }
         res.status(201).json(result);
     } catch (error) {
         console.log(error);

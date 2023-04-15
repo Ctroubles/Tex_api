@@ -19,6 +19,10 @@ const usersSchema= new Schema(
             type: String,
             required: true,
             unique: true
+        },        
+        picture:{
+            type: String,
+            required: false,
         },
         name:{
             type: String,
@@ -48,6 +52,7 @@ const usersSchema= new Schema(
             default: 0,
             required: false,
         },
+        purchaseOrders: [{ type: Schema.Types.ObjectId, ref: "PurchaseOrder" }],
     },
     { timestamps: true }
 );

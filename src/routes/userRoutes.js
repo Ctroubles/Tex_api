@@ -8,10 +8,12 @@ const User = require('../models/users.models.js');
 const userRoutes = Router();
 
 userRoutes.get("/", async (req, res) => {
-    const { email } = req.query; // obtener el parámetro de consulta "email"
+    const { email } = req.query; 
+    console.log(email);
     try {
-        const result = await User.findOne({ email: email }).populate('purchaseOrders')        
-        return res.status(200).send(result);
+        const result = await User.findOne({ email: email }).populate('purchaseOrders');
+        if(result) return res.status(200).send(result);
+        else throw new Error("No user found")
     } catch (error) {
          return res.status(404).send(error);
     }

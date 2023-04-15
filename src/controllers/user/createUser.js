@@ -12,6 +12,7 @@ const createUser = async (user) => {
             name: user.given_name,
             surname: user.family_name,
             email: user.email,
+            picture:user.picture
         })
         
         const result = await newUser.save();
