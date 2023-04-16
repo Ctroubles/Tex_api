@@ -43,6 +43,14 @@ const usersSchema= new Schema(
             type: Number,
             required: false,
         },
+        region:{
+            type: String,
+            required: false,
+        },        
+        city:{
+            type: String,
+            required: false,
+        },        
         address:{
             type: String,
             required: false,
