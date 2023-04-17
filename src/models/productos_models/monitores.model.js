@@ -1,5 +1,13 @@
 const { Schema, model }= require("mongoose");
-
+function getMultiplier(marca) {
+    if (marca === "") {
+      return 1.14;
+    } else if (marca === "") {
+      return 1.18;
+    } else {
+      return 1.0;
+    }
+  }
 const componentSchema= new Schema(
     {
         name:{
@@ -18,7 +26,7 @@ const componentSchema= new Schema(
             type: Number,
             required: true,
             get: function (value) {
-                return Number(value) * 1.14;
+                return Number(value) * 1.20;
             }
         },
         category:{
