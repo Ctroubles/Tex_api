@@ -71,6 +71,10 @@ const componentSchema= new Schema(
         fingerPrint:{
             type: String,
             required: true
+        },
+        warranty:{
+            type: String,
+            required: true
         },      
         cod:{
             type: String,
