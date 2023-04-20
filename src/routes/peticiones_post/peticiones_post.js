@@ -376,7 +376,7 @@ post_peticiones.post("/Audifonos", async (req, res) =>{
 
 post_peticiones.post("/Laptops", async (req, res) =>{
 
-    const {name,marca,img,price,category,stock,pantalla,procesador,RAM,Almacenamiento,graphics,conectividad,tecladoBacklit,os,fingerPrint,cod}= req.body;
+    const {name,marca,img,price,category,stock,pantalla,procesador,RAM,Almacenamiento,graphics,conectividad,tecladoBacklit,os,fingerPrint,warranty,cod}= req.body;
 
     try {
         if(!name) throw new Error("Te falta un dato basura")
@@ -395,6 +395,7 @@ post_peticiones.post("/Laptops", async (req, res) =>{
         if(!os) throw new Error("Te falta un dato basura")
         if(!fingerPrint) throw new Error("Te falta un dato basura")
         if(!cod) throw new Error("Te falta un dato basura")
+        if(!warranty) throw new Error("Te falta un dato basura")
         const newProduct = new Laptops({
             name,
             marca,
@@ -411,6 +412,7 @@ post_peticiones.post("/Laptops", async (req, res) =>{
             tecladoBacklit,
             os,
             fingerPrint,
+            warranty,
             cod,
             created_at: Date.now(),
             updated_at: Date.now()

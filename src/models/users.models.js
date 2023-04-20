@@ -9,7 +9,8 @@ const usersSchema= new Schema(
         },
         verified:{
             type: Boolean,
-            required:true,
+            required:false,
+            default:false,
         },        
         useridAuth0:{
             type: String,
@@ -26,10 +27,11 @@ const usersSchema= new Schema(
         },
         name:{
             type: String,
-            required:true,
+            required:false,
         },
         surname:{
             type: String,
+            required:false,
         },
         DNI:{
             type:String,
