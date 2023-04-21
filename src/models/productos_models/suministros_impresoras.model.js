@@ -17,6 +17,15 @@ const componentSchema= new Schema(
         price:{
             type: Number,
             required: true,
+            get: function (value) {
+                let multiplier = 1.25; 
+                if (this.tipo === 'Cartucho') {
+                    multiplier = 1.25; 
+                }else if (this.tipo === 'Líquida') {
+                    multiplier = 1.29; 
+                }
+                return Number(value) * multiplier;
+            }
         },
         category:{
             type:String,
