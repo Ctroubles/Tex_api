@@ -26,7 +26,7 @@ const ImpresoraSuministros = require("../models/productos_models/suministros_imp
 const Microfono = require('../models/productos_models/microfonos.model');
 const Audifonos = require('../models/productos_models/audifonos.model');
 const Monitores = require('../models/productos_models/monitores.model');
-const Motherboard = require('../models/productos_models/moterboard.model');
+const Motherboard = require('../models/productos_models/motherboard.model');
 const Mouses = require('../models/productos_models/mouses.model');
 
 
