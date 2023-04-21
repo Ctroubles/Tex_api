@@ -17,10 +17,6 @@ const componentSchema= new Schema(
         price:{
             type: Number,
             required: true,
-        },
-        category:{
-            type:String,
-            require: true,
             get: function (value) {
                 let multiplier = 1.15;
                 if (this.marca === 'CORSAIR') {
@@ -30,6 +26,10 @@ const componentSchema= new Schema(
                 }
                 return Number(value) * multiplier;
             }
+        },
+        category:{
+            type:String,
+            require: true,
         },
         stock:{
             type: Number,
