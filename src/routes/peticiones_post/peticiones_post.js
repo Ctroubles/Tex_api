@@ -1,7 +1,7 @@
 const { Router }= require("express");
 const Ram = require("../../models/productos_models/ram.models");
 const Fuentes = require("../../models/productos_models/fuentes.models");
-const Motherboard = require("../../models/productos_models/moterboard.model");
+const Motherboard = require("../../models/productos_models/motherboard.model");
 const Gabinetes = require("../../models/productos_models/gabinetes.models.js");
 const Monitores = require("../../models/productos_models/monitores.model.js");
 const Teclados = require("../../models/productos_models/teclados.model");
