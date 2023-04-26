@@ -28,7 +28,6 @@ orders_routes.post("/create", async (req, res) =>{
         })
         const result = await newOder.save()
         if(user){ const usuariupdt= await User.findByIdAndUpdate(user, { $push: { purchaseOrders: result._id } })
-            console.log(usuariupdt);
         }
         res.status(201).json(result);
     } catch (error) {

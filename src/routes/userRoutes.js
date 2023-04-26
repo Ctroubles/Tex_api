@@ -9,7 +9,6 @@ const userRoutes = Router();
 
 userRoutes.get("/", async (req, res) => {
     const { email } = req.query; 
-    console.log(email);
     try {
         const result = await User.findOne({ email: email }).populate('purchaseOrders');
         if(result) return res.status(200).send(result);

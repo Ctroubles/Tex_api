@@ -20,11 +20,13 @@ const componentSchema= new Schema(
             get: function (value) {
                 const price = Number(value);
                 if (price < 3000) {
-                  return price + 300;
+                  return price + 20;
+                } else if (price >= 2400 && price < 3000) {
+                    return price + 15;
                 } else if (price >= 3000 && price < 4000) {
-                  return price * 1.1;
+                  return price * 1.9;
                 } else {
-                  return price * 1.11;
+                  return price * 1.10;
                 }
               },
         },
