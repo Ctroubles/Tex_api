@@ -24,7 +24,7 @@ orders_routes.post("/create", async (req, res) =>{
             paymentMethod,
             totalPrice,
             products,
-            instructions
+            instructions,
         })
         const result = await newOder.save()
         if(user){ const usuariupdt= await User.findByIdAndUpdate(user, { $push: { purchaseOrders: result._id } })
@@ -57,6 +57,29 @@ orders_routes.get("/pedidos/:norden/:idorden", async (req, res) =>{
         res.status(400).json(error);
     }
 });
+
+
+
+orders_routes.put("/owner/:idorden/:email", async (req, res) =>{
+    try {
+        const { idorden, email } = req.params;
+        const order = await PurchaseOrder.findById(idorden)
+        const user = await User.find({email:email})
+        
+        const compraAcutalizada = await PurchaseOrder.findByIdAndUpdate(order, { user: user._id });
+        const userActualizado = await User.findByIdAndUpdate(user, { $push: { purchaseOrders: order._id } });
+
+        console.log(compraAcutalizada);
+        console.log(userActualizado);
+    
+        res.status(200).json(user)
+   
+        
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
+
 
 
 

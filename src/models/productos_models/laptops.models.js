@@ -24,7 +24,7 @@ const componentSchema= new Schema(
                 } else if (price >= 2400 && price < 3000) {
                     return price * 1.15;
                 } else if (price >= 3000 && price < 4000) {
-                  return price * 1.9;
+                  return price * 1.09;
                 } else {
                   return price * 1.10;
                 }

@@ -10,6 +10,11 @@ const PurchaseOrderSchema= new Schema(
             type: Boolean,
             default:false,
             required: true,
+        },         
+        delivered: {
+            type: Boolean,
+            default:false,
+            required: true,
         }, 
         user: {
             type: Schema.Types.ObjectId,

@@ -33,6 +33,7 @@ const Mouses = require('../models/productos_models/mouses.model');
 
 const router = Router();
 
+
 router.get("/",async(req,res)=>{
     try {
         const [laptops, almacenamiento, procesadores, ram , graficas,fuentes, gabinetes,teclados, impresoras,microfonos,audifonos,monitores,motherboard,mouses,impresoraSuministros] = await Promise.all([
