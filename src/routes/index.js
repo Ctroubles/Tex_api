@@ -8,7 +8,7 @@ const reviewRoutes= require("./reviewRoutes.js");
 const nodemailer = require('./nodemailer.js');
 
 
-const purchase_order = require("./purchase_order/create_orders")
+const payment_routes = require("./payment/payment_routes.js")
 const peticiones_post = require("./peticiones_post/peticiones_post")
 const purchase_orders = require("./purchase_order/create_orders.js")
 
@@ -70,6 +70,7 @@ router.get("/id/:id", async(req, res)=>{
 
 router.use("/category", categoriesRoutes)
 router.use("/users", userRoutes)
+router.use("/payment", payment_routes)
 // router.use("/review", reviewRoutes)
 // router.use("/upload", uploadRoutes)
 // router.use('/mailer', nodemailer);

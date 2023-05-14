@@ -8,7 +8,7 @@ const orders_routes = Router();
 
 orders_routes.post("/create", async (req, res) =>{
     try {
-        const {user,fullName,DNI,phone,email,department,city,date,totalPrice,products,address,paymentMethod,instructions}= req.body;
+        const {user,fullName,DNI,phone,email,department,city,date,totalPrice,products,address,paymentMethod,instructions, status}= req.body;
         const nOrden = generarNumeroOrden()
         const newOder = new PurchaseOrder({
             nOrden,
@@ -25,6 +25,7 @@ orders_routes.post("/create", async (req, res) =>{
             totalPrice,
             products,
             instructions,
+            status,
         })
         const result = await newOder.save()
         if(user){ const usuariupdt= await User.findByIdAndUpdate(user, { $push: { purchaseOrders: result._id } })
@@ -69,8 +70,7 @@ orders_routes.put("/owner/:idorden/:email", async (req, res) =>{
         const compraAcutalizada = await PurchaseOrder.findByIdAndUpdate(order, { user: user._id });
         const userActualizado = await User.findByIdAndUpdate(user, { $push: { purchaseOrders: order._id } });
 
-        console.log(compraAcutalizada);
-        console.log(userActualizado);
+      
     
         res.status(200).json(user)
    
